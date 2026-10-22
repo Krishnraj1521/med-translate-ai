@@ -33,14 +33,202 @@ st.markdown(
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
-    /* Sidebar Styling */
+    /* Hide Streamlit default sidebar/chrome using custom CSS */
     [data-testid="stSidebar"] {
-        background-color: #161B22 !important;
-        border-right: 1px solid #30363D !important;
+        display: none !important;
+    }
+    [data-testid="stSidebar"] { display: none; }
+
+    [data-testid="collapsedControl"] {
+        display: none !important;
     }
 
-    [data-testid="stSidebar"] * {
-        color: #E6EDF3 !important;
+    #MainMenu {
+        visibility: hidden !important;
+    }
+
+    footer {
+        visibility: hidden !important;
+    }
+
+    /* Medical Header Banner Styling */
+    .medical-header-banner {
+        background: linear-gradient(135deg, #111827 0%, #0F172A 50%, #0D1B2A 100%);
+        border: 1px solid rgba(0, 229, 255, 0.25);
+        border-radius: 16px;
+        padding: 24px 28px;
+        margin-bottom: 24px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 229, 255, 0.08);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .medical-header-banner::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #00E5FF 0%, #00B0FF 50%, #00E676 100%);
+    }
+
+    .banner-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .banner-left {
+        flex: 1 1 460px;
+    }
+
+    .banner-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(0, 229, 255, 0.12);
+        border: 1px solid rgba(0, 229, 255, 0.35);
+        border-radius: 9999px;
+        padding: 4px 12px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: #00E5FF;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+
+    .pulse-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #00E676;
+        box-shadow: 0 0 8px #00E676;
+        display: inline-block;
+        animation: pulse-glow 2s infinite;
+    }
+
+    @keyframes pulse-glow {
+        0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.7); }
+        70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 230, 118, 0); }
+        100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); }
+    }
+
+    .medical-banner-title {
+        color: #FFFFFF;
+        font-size: 2.1rem;
+        font-weight: 800;
+        margin: 0 0 6px 0;
+        letter-spacing: -0.5px;
+        line-height: 1.2;
+    }
+
+    .ai-gradient {
+        background: linear-gradient(135deg, #00E5FF 0%, #00E676 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .medical-banner-subtitle {
+        color: #94A3B8;
+        font-size: 0.95rem;
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    .banner-right-pills {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .clinical-pill {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(22, 27, 34, 0.85);
+        border: 1px solid #30363D;
+        border-radius: 8px;
+        padding: 6px 14px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: #E2E8F0;
+        white-space: nowrap;
+    }
+
+    .pill-icon {
+        font-size: 0.85rem;
+    }
+
+    /* Structured Metric Cards */
+    [data-testid="stMetric"] {
+        background: linear-gradient(135deg, #1A202C 0%, #161B22 100%) !important;
+        border: 1px solid #30363D !important;
+        border-radius: 12px !important;
+        padding: 16px 20px !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+        transition: transform 0.2s ease, border-color 0.2s ease !important;
+    }
+
+    [data-testid="stMetric"]:hover {
+        border-color: #00E5FF66 !important;
+        transform: translateY(-2px) !important;
+    }
+
+    [data-testid="stMetricLabel"] p {
+        color: #8B949E !important;
+        font-size: 0.88rem !important;
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+    }
+
+    [data-testid="stMetricValue"] div {
+        color: #00E5FF !important;
+        font-size: 1.8rem !important;
+        font-weight: 800 !important;
+    }
+
+    /* Clean Medical Streamlit Tabs Styling */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 8px;
+        background-color: #161B22;
+        padding: 6px;
+        border-radius: 12px;
+        border: 1px solid #30363D;
+        margin-bottom: 16px;
+    }
+
+    .stTabs [data-baseweb="tab"] {
+        height: 44px;
+        white-space: pre-wrap;
+        background-color: transparent;
+        border-radius: 8px;
+        color: #8B949E;
+        font-weight: 600;
+        font-size: 0.92rem;
+        padding: 8px 16px;
+        border: none;
+        transition: all 0.2s ease;
+    }
+
+    .stTabs [data-baseweb="tab"]:hover {
+        color: #FFFFFF;
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .stTabs [aria-selected="true"] {
+        background-color: #1E293B !important;
+        color: #00E5FF !important;
+        font-weight: 700 !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    .stTabs [data-baseweb="tab-highlight"] {
+        background-color: #00E5FF !important;
     }
 
     /* High-Contrast Primary Button Styling */
@@ -618,8 +806,33 @@ with st.sidebar:
     )
 
 # Main App Header
-render_html('<div class="brand-title">🩺 MedTranslate AI</div>')
-render_html('<div class="brand-subtitle">Clinical Lab Report Translator & Patient Guidance Dashboard</div>')
+render_html(
+    """
+    <div class="medical-header-banner">
+        <div class="banner-content">
+            <div class="banner-left">
+                <div class="banner-badge">
+                    <span class="pulse-dot"></span>
+                    <span>CLINICAL DIAGNOSTIC TRANSLATOR</span>
+                </div>
+                <h1 class="medical-banner-title">
+                    <span class="med-icon">🩺</span> MedTranslate <span class="ai-gradient">AI</span>
+                </h1>
+                <p class="medical-banner-subtitle">
+                    Clinical Lab Report Translator & Patient Guidance Dashboard
+                </p>
+                <div class="brand-title" style="display: none;">🩺 MedTranslate AI</div>
+                <div class="brand-subtitle" style="display: none;">Clinical Lab Report Translator & Patient Guidance Dashboard</div>
+            </div>
+            <div class="banner-right-pills">
+                <div class="clinical-pill"><span class="pill-icon">⚡</span> Sub-Second Inference</div>
+                <div class="clinical-pill"><span class="pill-icon">🔒</span> In-Memory Diagnostic Engine</div>
+                <div class="clinical-pill"><span class="pill-icon">🌐</span> Multilingual Interpretation</div>
+            </div>
+        </div>
+    </div>
+    """
+)
 
 if demo_mode:
     st.warning("⚠️ DEMO MODE ACTIVE: Displaying sample mock data.")
@@ -989,9 +1202,10 @@ if analyze_clicked:
                             st.session_state.is_fallback = False
                             st.session_state.current_lang = selected_language
                             st.session_state.streaming_complete = True
-                            st.markdown("---")
-                            render_html('<div class="section-header">📋 Report Translation & Summary</div>')
-                            st.markdown(response_text)
+                            with st.container():
+                                st.markdown("---")
+                                render_html('<div class="section-header">📋 Report Translation & Summary</div>')
+                                st.markdown(response_text)
 
                     except Exception as ex:
                         stream_placeholder.empty()
@@ -1017,61 +1231,78 @@ if active_dashboard_data is not None:
 
     st.markdown("---")
 
-    # ================= 1. TOP SECTION: EXECUTIVE SUMMARY =================
-    render_html('<div class="section-header">📋 Executive Summary</div>')
-    render_html('<div class="section-subtext">High-level translation and clinical status overview</div>')
+    # Structured Dashboard View: Metric Cards & Tabs Container
+    with st.container():
+        # Top KPI Summary Metric Cards Container
+        with st.container():
+            col_stat1, col_stat2, col_stat3 = st.columns(3)
+            with col_stat1:
+                st.metric("Total Parameters", len(metrics))
+            with col_stat2:
+                st.metric("In Normal Range", len(normal_metrics))
+            with col_stat3:
+                st.metric("Flagged / Out of Range", len(flagged_metrics))
 
-    summary_html = f"""
+        st.markdown("<div style='margin-bottom: 12px;'></div>", unsafe_allow_html=True)
+
+        # Tabbed Structured Dashboard Sections
+        tab_summary, tab_metrics, tab_flagged, tab_doctor = st.tabs([
+            "📋 Executive Summary",
+            f"📊 Lab Metrics Breakdown ({len(metrics)})",
+            f"⚠️ Flagged Findings ({len(flagged_metrics)})",
+            "🩺 Doctor Consultation",
+        ])
+
+        with tab_summary:
+            with st.container():
+                # ================= 1. TOP SECTION: EXECUTIVE SUMMARY =================
+                render_html('<div class="section-header">📋 Executive Summary</div>')
+                render_html('<div class="section-subtext">High-level translation and clinical status overview</div>')
+
+                summary_html = f"""
 <div class="hero-summary-card">
     <div class="hero-summary-title">Summary & Findings</div>
     <div class="hero-summary-body">{summary_text}</div>
 </div>
 """
-    render_html(summary_html)
+                render_html(summary_html)
 
-    if is_attention_needed:
-        banner_html = f"""
+                if is_attention_needed:
+                    banner_html = f"""
 <div class="banner-alert">
     <span>⚠️</span>
     <span><strong>Attention Recommended:</strong> {len(flagged_metrics)} out of {len(metrics)} analyzed metric(s) fall outside standard clinical reference ranges.</span>
 </div>
 """
-        render_html(banner_html)
-    else:
-        banner_html = """
+                    render_html(banner_html)
+                else:
+                    banner_html = """
 <div class="banner-normal">
     <span>✅</span>
     <span><strong>Optimal Status:</strong> All analyzed metrics fall within standard healthy reference ranges.</span>
 </div>
 """
-        render_html(banner_html)
+                    render_html(banner_html)
 
-    # Counter Metrics in Dark Cards
-    col_stat1, col_stat2, col_stat3 = st.columns(3)
-    with col_stat1:
-        st.metric("Total Parameters", len(metrics))
-    with col_stat2:
-        st.metric("In Normal Range", len(normal_metrics))
-    with col_stat3:
-        st.metric("Flagged / Out of Range", len(flagged_metrics))
+        with tab_metrics:
+            with st.container():
+                # ================= 2. SECOND SECTION: LAB METRICS BREAKDOWN =================
+                render_html('<div class="section-header">📊 Lab Metrics Breakdown</div>')
+                render_html('<div class="section-subtext">Line-by-line stacked comparison of Patient Values vs Standard Reference Ranges</div>')
 
-    # ================= 2. SECOND SECTION: LAB METRICS BREAKDOWN =================
-    render_html('<div class="section-header">📊 Lab Metrics Breakdown</div>')
-    render_html('<div class="section-subtext">Line-by-line stacked comparison of Patient Values vs Standard Reference Ranges</div>')
+                if not metrics:
+                    st.info("No metrics extracted.")
+                else:
+                    for m in metrics:
+                        status_raw = str(m.get("status", "Normal")).strip()
+                        is_flagged = status_raw.capitalize() in ["High", "Low", "Abnormal"]
 
-    if not metrics:
-        st.info("No metrics extracted.")
-    else:
-        for m in metrics:
-            status_raw = str(m.get("status", "Normal")).strip()
-            is_flagged = status_raw.capitalize() in ["High", "Low", "Abnormal"]
+                        row_class = "metric-row-alert" if is_flagged else "metric-row-normal"
+                        badge_class = "badge-alert-dark" if is_flagged else "badge-normal-dark"
+                        val_class = "val-highlight-alert" if is_flagged else "val-highlight-normal"
+                        badge_label = f"⚠️ {status_raw.upper()}" if is_flagged else "✅ NORMAL"
 
-            row_class = "metric-row-alert" if is_flagged else "metric-row-normal"
-            badge_class = "badge-alert-dark" if is_flagged else "badge-normal-dark"
-            val_class = "val-highlight-alert" if is_flagged else "val-highlight-normal"
-            badge_label = f"⚠️ {status_raw.upper()}" if is_flagged else "✅ NORMAL"
-
-            metric_row_html = f"""
+                        metric_row_html = f"""
 <div class="{row_class}">
     <div class="metric-header-row">
         <span class="metric-title-text">{m.get('name', 'Metric')}</span>
@@ -1092,17 +1323,19 @@ if active_dashboard_data is not None:
     </div>
 </div>
 """
-            render_html(metric_row_html)
+                        render_html(metric_row_html)
 
-    # ================= 3. THIRD SECTION: FLAGGED / OUT-OF-RANGE VALUES =================
-    render_html('<div class="section-header">⚠️ Flagged / Out-of-Range Values</div>')
-    render_html('<div class="section-subtext">Dedicated clinical callout of metrics requiring attention and doctor discussion</div>')
+        with tab_flagged:
+            with st.container():
+                # ================= 3. THIRD SECTION: FLAGGED / OUT-OF-RANGE VALUES =================
+                render_html('<div class="section-header">⚠️ Flagged / Out-of-Range Values</div>')
+                render_html('<div class="section-subtext">Dedicated clinical callout of metrics requiring attention and doctor discussion</div>')
 
-    if is_attention_needed:
-        flagged_items_html = ""
-        for fm in flagged_metrics:
-            status_text = str(fm.get("status", "Abnormal")).upper()
-            flagged_items_html += f"""
+                if is_attention_needed:
+                    flagged_items_html = ""
+                    for fm in flagged_metrics:
+                        status_text = str(fm.get("status", "Abnormal")).upper()
+                        flagged_items_html += f"""
 <div class="flagged-item-card">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
         <strong style="color: #FFFFFF; font-size: 1.05rem;">{fm.get('name')}</strong>
@@ -1118,7 +1351,7 @@ if active_dashboard_data is not None:
 </div>
 """
 
-        container_html = f"""
+                    container_html = f"""
 <div class="flagged-callout-container">
     <div style="color: #FF7B72; font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">
         ⚠️ Attention Required: {len(flagged_metrics)} Metric(s) Outside Standard Bounds
@@ -1129,9 +1362,9 @@ if active_dashboard_data is not None:
     {flagged_items_html}
 </div>
 """
-        render_html(container_html)
-    else:
-        normal_all_html = """
+                    render_html(container_html)
+                else:
+                    normal_all_html = """
 <div class="normal-all-container">
     <div style="color: #3FB950; font-size: 1.1rem; font-weight: 700; margin-bottom: 6px;">
         ✅ No Flagged Parameters Detected
@@ -1141,15 +1374,17 @@ if active_dashboard_data is not None:
     </div>
 </div>
 """
-        render_html(normal_all_html)
+                    render_html(normal_all_html)
 
-    # ================= 4. FOURTH SECTION: DOCTOR PREP CHECKLIST =================
-    render_html('<div class="section-header">🩺 Doctor Consultation Checklist</div>')
-    render_html('<div class="section-subtext">Select key questions to prepare for your medical consultation</div>')
+        with tab_doctor:
+            with st.container():
+                # ================= 4. FOURTH SECTION: DOCTOR PREP CHECKLIST =================
+                render_html('<div class="section-header">🩺 Doctor Consultation Checklist</div>')
+                render_html('<div class="section-subtext">Select key questions to prepare for your medical consultation</div>')
 
-    selected_questions = []
-    with st.container():
-        doc_header_html = """
+                selected_questions = []
+                with st.container():
+                    doc_header_html = """
 <div style="background-color: #1E222B; border: 1px solid #30363D; border-radius: 12px; padding: 18px 20px; margin-bottom: 16px;">
     <div style="color: #00E5FF; font-weight: 700; font-size: 1rem; margin-bottom: 8px;">
         Recommended Consultation Inquiries
@@ -1159,70 +1394,71 @@ if active_dashboard_data is not None:
     </div>
 </div>
 """
-        render_html(doc_header_html)
+                    render_html(doc_header_html)
 
-        for q_idx, question in enumerate(doctor_questions, start=1):
-            checked = st.checkbox(
-                f"**Q{q_idx}:** {question}",
-                value=True,
-                key=f"dark_q_{q_idx}",
-            )
-            if checked:
-                selected_questions.append(question)
+                    for q_idx, question in enumerate(doctor_questions, start=1):
+                        checked = st.checkbox(
+                            f"**Q{q_idx}:** {question}",
+                            value=True,
+                            key=f"dark_q_{q_idx}",
+                        )
+                        if checked:
+                            selected_questions.append(question)
 
-        # Generate Checklist Text
-        checklist_lines = [
-            "==================================================================",
-            "        🩺 MedTranslate AI - Doctor Consultation Checklist       ",
-            "==================================================================",
-            f"Target Language: {lang}",
-            "",
-            "1. EXECUTIVE SUMMARY:",
-            f"   {summary_text}",
-            "",
-            "2. SELECTED QUESTIONS FOR YOUR PHYSICIAN:",
-        ]
-        if selected_questions:
-            for s_idx, sq in enumerate(selected_questions, 1):
-                checklist_lines.append(f"   [ ] Q{s_idx}: {sq}")
-        else:
-            checklist_lines.append("   (No questions selected)")
+                    # Generate Checklist Text
+                    checklist_lines = [
+                        "==================================================================",
+                        "        🩺 MedTranslate AI - Doctor Consultation Checklist       ",
+                        "==================================================================",
+                        f"Target Language: {lang}",
+                        "",
+                        "1. EXECUTIVE SUMMARY:",
+                        f"   {summary_text}",
+                        "",
+                        "2. SELECTED QUESTIONS FOR YOUR PHYSICIAN:",
+                    ]
+                    if selected_questions:
+                        for s_idx, sq in enumerate(selected_questions, 1):
+                            checklist_lines.append(f"   [ ] Q{s_idx}: {sq}")
+                    else:
+                        checklist_lines.append("   (No questions selected)")
 
-        checklist_lines.append("")
-        checklist_lines.append("3. FLAGGED / OUT-OF-RANGE METRICS TO REVIEW:")
-        if flagged_metrics:
-            for fm in flagged_metrics:
-                checklist_lines.append(
-                    f"   • {fm.get('name')}: {fm.get('value')} (Standard: {fm.get('reference_range')}) - [{fm.get('status')}]"
-                )
-                checklist_lines.append(f"     Context: {fm.get('explanation')}")
-        else:
-            checklist_lines.append("   • All analyzed parameters were within normal reference ranges.")
+                    checklist_lines.append("")
+                    checklist_lines.append("3. FLAGGED / OUT-OF-RANGE METRICS TO REVIEW:")
+                    if flagged_metrics:
+                        for fm in flagged_metrics:
+                            checklist_lines.append(
+                                f"   • {fm.get('name')}: {fm.get('value')} (Standard: {fm.get('reference_range')}) - [{fm.get('status')}]"
+                            )
+                            checklist_lines.append(f"     Context: {fm.get('explanation')}")
+                    else:
+                        checklist_lines.append("   • All analyzed parameters were within normal reference ranges.")
 
-        checklist_lines.extend(
-            [
-                "",
-                "==================================================================",
-                "DISCLAIMER: This checklist is intended for communication and",
-                "educational assistance only. It does not replace professional",
-                "medical diagnosis, clinical advice, or treatment.",
-                "==================================================================",
-            ]
-        )
-        checklist_content = "\n".join(checklist_lines)
+                    checklist_lines.extend(
+                        [
+                            "",
+                            "==================================================================",
+                            "DISCLAIMER: This checklist is intended for communication and",
+                            "educational assistance only. It does not replace professional",
+                            "medical diagnosis, clinical advice, or treatment.",
+                            "==================================================================",
+                        ]
+                    )
+                    checklist_content = "\n".join(checklist_lines)
 
-        render_html("<div style='height: 8px;'></div>")
-        st.download_button(
-            label="📥 Download Doctor Questions Checklist (.txt)",
-            data=checklist_content,
-            file_name=f"medtranslate_doctor_checklist_{lang.lower()}.txt",
-            mime="text/plain",
-            use_container_width=True,
-        )
+                    render_html("<div style='height: 8px;'></div>")
+                    st.download_button(
+                        label="📥 Download Doctor Questions Checklist (.txt)",
+                        data=checklist_content,
+                        file_name=f"medtranslate_doctor_checklist_{lang.lower()}.txt",
+                        mime="text/plain",
+                        use_container_width=True,
+                    )
 elif st.session_state.get("raw_response") and not analyze_clicked:
-    st.markdown("---")
-    render_html('<div class="section-header">📋 Report Translation & Summary</div>')
-    st.markdown(st.session_state["raw_response"])
+    with st.container():
+        st.markdown("---")
+        render_html('<div class="section-header">📋 Report Translation & Summary</div>')
+        st.markdown(st.session_state["raw_response"])
 
 # ================= 5. BOTTOM SECTION: MANDATORY MEDICAL DISCLAIMER =================
 disclaimer_html = """
@@ -1234,4 +1470,3 @@ disclaimer_html = """
 </div>
 """
 render_html(disclaimer_html)
-
