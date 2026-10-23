@@ -33,10 +33,10 @@ with col_theme:
 )
 
 # Custom Strict Dark Mode & High-Contrast Button CSS Styling
-st.markdown(
-    # ==============================================================================
-# DYNAMIC CSS (STRICT READABILITY & TECHY ANIMATIONS)
+st.markdown(# ==============================================================================
+# 2. DYNAMIC CSS (STRICT READABILITY & TECHY ANIMATIONS)
 # ==============================================================================
+# Common Techy Animation for Theme Toggle
 st.markdown("""
 <style>
     /* Hide Streamlit Sidebar & Chrome */
@@ -69,61 +69,91 @@ if theme == "☀️ Light":
     st.markdown("""
     <style>
         /* Strict Light Mode Text Colors (Fixes Unreadable Text Glitch) */
-        .stApp { background-color: #F8FAFC !important; color: #0F172A !important; }
+        .stApp { background-color: #F8FAFC !important; color: #0F172A !important; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
         
         /* Force Native Streamlit Widgets to Dark Text */
         .stMarkdown p, .stMarkdown span { color: #0F172A; }
-        .stCheckbox label, .stRadio label, .stSelectbox label { color: #0F172A !important; font-weight: 700 !important; }
+        .stCheckbox label { color: #0F172A !important; font-weight: 600 !important; }
+        .stRadio label { color: #0F172A !important; }
+        .stSelectbox label { color: #0F172A !important; font-weight: 700 !important; }
         div[data-baseweb="select"] * { color: #0F172A !important; background-color: #FFFFFF !important; }
         .stFileUploader label, .stFileUploader div { color: #0F172A !important; }
         [data-testid="stStatusWidget"] * { color: #0F172A !important; }
         .stTabs [data-baseweb="tab"] p { color: #475569 !important; font-weight: 600; }
         .stTabs [aria-selected="true"] p { color: #0F172A !important; font-weight: 800 !important; }
 
-        /* Card Colors for Light Mode */
-        .hero-summary-card { background: #F0FDF4; border: 1px solid #BBF7D0; border-left: 6px solid #22C55E; border-radius: 12px; padding: 22px 24px; margin-bottom: 24px; }
-        .hero-summary-body { color: #15803D !important; font-size: 1.05rem; }
-        .metric-row-normal { background-color: #FFFFFF; border: 1px solid #E2E8F0; border-left: 5px solid #22C55E; border-radius: 12px; padding: 18px 22px; margin-bottom: 14px; }
+        /* Custom HTML Cards CSS */
+        .sticky-disclaimer-banner { background: #FEF3C7; border: 1px solid #F59E0B; border-radius: 8px; padding: 10px 18px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .disclaimer-text { color: #92400E !important; font-size: 0.88rem; line-height: 1.4; }
+        .disclaimer-text strong { color: #B45309 !important; }
+
+        .hero-summary-card { background: #F0FDF4; border: 1px solid #BBF7D0; border-left: 6px solid #22C55E; border-radius: 12px; padding: 22px 24px; margin-bottom: 24px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+        .hero-summary-body { color: #15803D !important; font-size: 1.05rem; line-height: 1.65; }
+
         .flagged-card-soft { background: #FFFBEB; border: 1px solid #FDE68A; border-left: 6px solid #F59E0B; border-radius: 12px; padding: 18px 22px; margin-bottom: 16px; }
+        .metric-row-normal { background-color: #FFFFFF; border: 1px solid #E2E8F0; border-left: 5px solid #22C55E; border-radius: 12px; padding: 18px 22px; margin-bottom: 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
         
-        /* Typography overrides */
-        .metric-name, .section-header { color: #0F172A !important; font-weight: 700; }
+        .metric-name { color: #0F172A !important; font-size: 1.05rem; font-weight: 700; }
         .metric-value-alert { color: #D97706 !important; font-weight: 800; font-size: 1.35rem; }
+        .metric-ref-alert { color: #475569 !important; font-size: 0.85rem; margin-left: 10px; }
         .metric-value-normal { color: #15803D !important; font-weight: 800; font-size: 1.35rem; }
+        .metric-ref-normal { color: #475569 !important; font-size: 0.88rem; }
+        
+        .plain-english-box { background: #FEF3C7; border: 1px solid #FDE68A; border-radius: 8px; padding: 10px 14px; margin-top: 10px; }
+        .plain-english-title { color: #B45309 !important; font-weight: 700; font-size: 0.84rem; margin-bottom: 4px; }
+        .plain-english-text { color: #92400E !important; font-size: 0.92rem; line-height: 1.55; }
+        .metric-explanation-box { background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px 14px; color: #334155 !important; font-size: 0.88rem; margin-top: 10px;}
+
         .badge-soft-amber { background-color: #FEF3C7; color: #D97706 !important; border: 1px solid #F59E0B; padding: 4px 12px; font-size: 0.78rem; font-weight: 700; border-radius: 9999px; }
         .badge-normal-dark { background-color: #DCFCE7; color: #15803D !important; border: 1px solid #22C55E; padding: 4px 12px; font-size: 0.78rem; font-weight: 700; border-radius: 9999px; }
+        
+        .section-header { color: #0F172A !important; font-size: 1.25rem; font-weight: 700; margin-top: 24px; margin-bottom: 8px; }
+        .section-subtext { color: #475569 !important; font-size: 0.9rem; margin-bottom: 16px; }
+
+        .dictionary-card { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .dictionary-title { color: #0F172A !important; font-size: 1rem; font-weight: 700; }
+        .dictionary-subtext { color: #475569 !important; font-size: 0.84rem; margin-bottom: 12px; }
+        .dictionary-chip { background: #F1F5F9; border: 1px solid #CBD5E1; color: #334155 !important; border-radius: 9999px; padding: 5px 12px; font-size: 0.8rem; font-weight: 600; cursor: help; }
+        
+        .banner-alert { background-color: #FEF2F2; border: 1px solid #FECACA; border-left: 6px solid #EF4444; border-radius: 10px; padding: 14px 18px; color: #991B1B !important; font-weight: 600; font-size: 0.95rem; margin-bottom: 18px; display: flex; align-items: center; gap: 12px;}
+        .banner-normal { background-color: #F0FDF4; border: 1px solid #BBF7D0; border-left: 6px solid #22C55E; border-radius: 10px; padding: 14px 18px; color: #166534 !important; font-weight: 600; font-size: 0.95rem; margin-bottom: 18px; display: flex; align-items: center; gap: 12px;}
+
+        .med-tooltip-container { position: relative; display: inline-flex; align-items: center; gap: 6px; cursor: help; }
+        .tooltip-badge { font-size: 0.75rem; color: #2563EB !important; background: #DBEAFE; border: 1px solid #BFDBFE; border-radius: 50%; width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center; }
+        .med-tooltip-text { visibility: hidden; opacity: 0; width: 280px; background: #1E293B; color: #F8FAFC !important; text-align: left; border-radius: 8px; padding: 10px 14px; position: absolute; z-index: 10000; bottom: 125%; left: 0; font-size: 0.82rem; font-weight: 400; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); }
+        .med-tooltip-container:hover .med-tooltip-text { visibility: visible; opacity: 1; }
+
+        [data-testid="stMetric"] { background: #FFFFFF !important; border: 1px solid #E2E8F0 !important; border-radius: 12px !important; padding: 16px 20px !important; box-shadow: 0 2px 4px rgba(0,0,0,0.02) !important; }
+        [data-testid="stMetricLabel"] p { color: #475569 !important; font-weight: 600 !important; }
+        [data-testid="stMetricValue"] div { color: #0F172A !important; font-weight: 800 !important; }
     </style>
     """, unsafe_allow_html=True)
 else:
     st.markdown("""
     <style>
-        /* Standard Dark Mode Formatting */
-        .stApp { background-color: #0E1117 !important; color: #FFFFFF !important; }
-        .hero-summary-card { background: linear-gradient(135deg, #1E222B 0%, #161B22 100%); border: 1px solid #30363D; border-left: 6px solid #00E5FF; border-radius: 14px; padding: 22px 24px; margin-bottom: 24px; }
-        .hero-summary-body { color: #E6EDF3 !important; font-size: 1.05rem; }
+        .stApp { background-color: #0E1117 !important; color: #FFFFFF !important; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        
+        .sticky-disclaimer-banner { background: linear-gradient(90deg, #451a03 0%, #78350f 50%, #451a03 100%); border: 1px solid #f59e0b; border-radius: 10px; padding: 10px 18px; margin-bottom: 20px; }
+        .disclaimer-text { color: #fef3c7 !important; font-size: 0.88rem; line-height: 1.4; }
+        .disclaimer-text strong { color: #fbbf24 !important; }
+
+        .hero-summary-card { background: linear-gradient(135deg, #1E222B 0%, #161B22 100%); border: 1px solid #30363D; border-left: 6px solid #00E5FF; border-radius: 14px; padding: 22px 24px; margin-bottom: 24px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4); }
+        .hero-summary-body { color: #E6EDF3 !important; font-size: 1.05rem; line-height: 1.65; }
+
         .flagged-card-soft { background: linear-gradient(135deg, rgba(69, 26, 3, 0.4) 0%, #1f1d24 100%); border: 1px solid rgba(245, 158, 11, 0.45); border-left: 6px solid #f59e0b; border-radius: 12px; padding: 18px 22px; margin-bottom: 16px; }
         .metric-row-normal { background-color: #1E222B; border: 1px solid #30363D; border-left: 5px solid #238636; border-radius: 12px; padding: 18px 22px; margin-bottom: 14px; }
+
         .metric-name { color: #FFFFFF !important; font-size: 1.05rem; font-weight: 700; }
         .metric-value-alert { color: #fb923c !important; font-weight: 800; font-size: 1.35rem; }
+        .metric-ref-alert { color: #94a3b8 !important; font-size: 0.85rem; margin-left: 10px; }
+        
         .metric-value-normal { color: #00E5FF !important; font-weight: 800; font-size: 1.35rem; }
-        .badge-soft-amber { background-color: #d97706; color: #ffffff !important; border: 1px solid #f59e0b; padding: 4px 12px; font-size: 0.78rem; font-weight: 700; border-radius: 9999px; }
-        .badge-normal-dark { background-color: #238636; color: #FFFFFF !important; border: 1px solid #2ea043; padding: 4px 12px; font-size: 0.78rem; font-weight: 700; border-radius: 9999px; }
-    </style>
-    """, unsafe_allow_html=True)
-    /* Bottom Disclaimer */
-    .disclaimer-card {
-        background-color: #161B22;
-        border: 1px solid #30363D;
-        border-radius: 10px;
-        padding: 16px 20px;
-        margin-top: 32px;
-        color: #8B949E;
-        font-size: 0.85rem;
-        line-height: 1.6;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
+        .metric-ref-normal { color: #8B949E !important; font-size: 0.88rem; }
+
+        .plain-english-box { background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 10px 14px; margin-top: 10px; }
+        .plain-english-title { color: #fbbf24 !important; font-weight: 700; font-size: 0.84rem; margin-bottom: 4px; }
+        .plain-english-text { color: #fef3c7 !important; font-size: 0.92rem; line-height: 1.55; }
+        .metric-explanation-box { background-color: #161B22; border: 1px solid #30363D; border-radius: 8px; padding: 10px
 )
 
 # Helper function to render HTML cleanly without markdown code-block indentation issues
